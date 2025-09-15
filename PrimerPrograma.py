@@ -36,3 +36,17 @@ cadea  = "Esto é unha cadea marcada con comillas 'dobles'"
 cadea2 = 'Esto é unha cadea marcada con comillas "simples"'
 print(cadea)
 print(cadea2)
+
+
+#OPERADORES ARITMÉTICOS
+# + -> Suma
+# - -> Resta o negación
+# * -> Multiplicación
+# / -> División
+# ** -> Exponente (DEVUELVE DECIMALES)
+# // DivisiónEntera (NO DEVUELVE DECIMALES)
+# % Tanto por ciento (DEVUELVE  EL RESTO)
+
+
+
+
