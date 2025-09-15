@@ -1,3 +1,6 @@
+#Tipos de Comentarios
+
+#Comentario simple
 """
 Este é un comentario multiliña
 onde podemos escribir calquera
