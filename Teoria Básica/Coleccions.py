@@ -28,3 +28,4 @@ print(l[1][2:-2])
 print(l[:1])#Coge solo el primero
 print(l[1:])#Todos menos el primero
 print(l[1:6:2]) #Coge valores del 1 al 5 de dos en dos
+print(l[::-1])#Recorres la lista al reves
