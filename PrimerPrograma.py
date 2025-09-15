@@ -19,7 +19,7 @@ complexo = 2.3 + 9.3j
 print(type(complexo)) #Type sirve para imprimir el tipo de la variable
 
 #Cadeas
-#Las comillas se pueden usar tanto comillas simples como comillas dobles
+#Las comillas, se pueden usar tanto comillas simples como comillas dobles
 cadea  = "Esto é unha cadea marcada con comillas 'dobles'"
 cadea2 = 'Esto é unha cadea marcada con comillas "simples"'
 print(cadea)
