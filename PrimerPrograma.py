@@ -73,3 +73,10 @@ print(cadea2)
 
 # << -> Sirve para multiplicar, Se multiplica por potencias de 2 ( 2, 4, 8, 16, 32, 64)
 #print(5 << 5) -> 5 * 32
+
+#OPERAORES DE CADEA
+cad = "un"
+cad2 ="dous"
+
+print(cad + cad2)
+print(cad*10)
