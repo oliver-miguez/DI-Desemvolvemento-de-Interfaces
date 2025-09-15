@@ -4,6 +4,10 @@ onde podemos escribir calquera
 texto que desexamos
 """
 
+'''
+Os comentarios multiliña ou de documantación
+tamén funcionan con comiñas simples
+'''
 # 1º NUMEROS EN PYTHON
 
 #Enteiros
