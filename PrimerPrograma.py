@@ -1,3 +1,8 @@
+"""
+Este é un comentario multiliña
+onde podemos escribir calquera
+texto que desexamos
+"""
 
 # 1º NUMEROS EN PYTHON
 
