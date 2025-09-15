@@ -63,7 +63,7 @@ print(cadea2)
 # & -> And
 # | -> Or
 # ^ -> Xor (Es una tabla especial, buscarla)
-# ~ -> Not (~2)
+# ~ -> Not (~2) no usamos
 
 # >> -> Sirve para dividir, no redondea, se divide por potencias de 2 ( 2, 4, 8, 16, 32, 64)
 #print(5>>2) = 2  -> Divide 5 entre 4 sin devolver el resto
@@ -80,3 +80,9 @@ cad2 ="dous"
 
 print(cad + cad2)
 print(cad*10)
+
+#OPERADORES BOOLEANOS
+
+#Java       &&      ||      !
+#Python     and     or      not
+#Standar    ==      !=      < >     <=      >=
