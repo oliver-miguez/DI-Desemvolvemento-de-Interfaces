@@ -9,6 +9,7 @@ print(type(numEnteiros))
 numDecimal = 5.6
 numDecimal2 = 0.1e-5
 print(type(numDecimal))
+print(type(numDecimal2))
 
 #Booleanos
 booleano = True #El True o el False siempre van en mayúscula
