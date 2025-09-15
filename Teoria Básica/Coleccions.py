@@ -32,5 +32,8 @@ print(l[::-1])#Recorres la lista al reves
 
 #TUPLAS
 
-t = (2,5,2+4j, "Bugario", (22,3,5,6),3,9) #Cuando esto se declara asi , no se puede modificar
+t = (2,5,2+4j, "Bugario", [22,3,5,6],3,9) #Cuando esto se declara asi , no se puede modificar
+print(t)
 #t[2] = "mondongo" -> NO FUNCIONA, ya que intenta cambiar un valor, n
+t[4][2]= "Cambiazo" #como el valor [4] es una lista y no una tupla se puede cambiar su valor
+print(t)
