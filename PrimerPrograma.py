@@ -49,4 +49,27 @@ print(cadea2)
 
 
 
+#OPERADORES ARITMÉTICOS
+# + -> Suma
+# - -> Resta o negación
+# * -> Multiplicación
+# / -> División
+# ** -> Exponente (DEVUELVE DECIMALES)
+# // DivisiónEntera (NO DEVUELVE DECIMALES)
+# % Tanto por ciento (DEVUELVE  EL RESTO)
 
+
+#OPERADORES A NIVEL DE BIT
+# & -> And
+# | -> Or
+# ^ -> Xor (Es una tabla especial, buscarla)
+# ~ -> Not (~2)
+
+# >> -> Sirve para dividir, no redondea, se divide por potencias de 2 ( 2, 4, 8, 16, 32, 64)
+#print(5>>2) = 2  -> Divide 5 entre 4 sin devolver el resto
+#print (10 >> 2) -> Divide 10 entre 4
+#print(20>>4) = 1 -> Divide 20 entre 8
+#print(5>>2) -> 5 * 4
+
+# << -> Sirve para multiplicar, Se multiplica por potencias de 2 ( 2, 4, 8, 16, 32, 64)
+#print(5 << 5) -> 5 * 32
