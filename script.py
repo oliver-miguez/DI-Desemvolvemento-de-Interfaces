@@ -13,5 +13,6 @@ booleano = True #El True o el False siempre van en mayúscula
 
 #Complexos
 complexo = 2.3 + 9.3j
+print(type(complexo)) #Type sirve para imprimir el tipo de la variable
 
 #Cadeas
