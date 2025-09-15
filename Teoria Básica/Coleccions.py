@@ -7,7 +7,7 @@ Coleccións:
 
 """
 
-#Listas
+#LISTAS
 
 l = [23,"Bugario",1,"Hola",[1,2,3,45],-123,-12,2, 3 +4j, True, 1+2,1.2]
 print(type(l))
@@ -29,3 +29,8 @@ print(l[:1])#Coge solo el primero
 print(l[1:])#Todos menos el primero
 print(l[1:6:2]) #Coge valores del 1 al 5 de dos en dos
 print(l[::-1])#Recorres la lista al reves
+
+#TUPLAS
+
+t = (2,5,2+4j, "Bugario", (22,3,5,6),3,9) #Cuando esto se declara asi , no se puede modificar
+#t[2] = "mondongo" -> NO FUNCIONA, ya que intenta cambiar un valor
