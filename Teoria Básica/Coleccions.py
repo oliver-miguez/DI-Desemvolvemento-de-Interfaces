@@ -37,3 +37,6 @@ print(t)
 #t[2] = "mondongo" -> NO FUNCIONA, ya que intenta cambiar un valor, n
 t[4][2]= "Cambiazo" #como el valor [4] es una lista y no una tupla se puede cambiar su valor
 print(t)
+
+t2 = 3,
+print(t2)
