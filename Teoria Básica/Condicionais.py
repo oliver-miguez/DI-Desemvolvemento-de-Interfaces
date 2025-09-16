@@ -31,6 +31,7 @@ while n2 < 100:
     n2 += 2
     print(n2)
 print("____________________")
+#Do while
 while True:
     print(n1)
     n1 += 1
