@@ -40,3 +40,23 @@ print(t)
 
 t2 = 3,
 print(t2)
+
+#DICCIONARIOS
+
+d = {
+    1: "Un",
+    2: "Dous",
+    3: "Tres",
+    4: "Catro",
+
+}
+#Muestra el valor "3:" del diccionario
+print(d[3])
+#Se pueden reasingnar valores
+d[3] = "three"
+print(d[3])
+
+
+
+
+
