@@ -1,5 +1,3 @@
-
-
 #SENTENCIA CONDICIONAIS
 
 n1 = 5
