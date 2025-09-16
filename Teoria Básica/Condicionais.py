@@ -51,3 +51,30 @@ for numero in numeros:
     suma = suma + 1
 
 print(suma)
+
+print("____________________")
+
+
+d = {
+    1:"un",
+    2:"dous",
+    3:"tres",
+    4:"catro",
+    5:"cinco"
+}
+
+for valor in d:
+    print(valor) #muesta las claves del diccionario| 1,2,3
+    print(d[valor])#muestra el valor propio de cada clave| "un","dous"...
+
+print("____________________")
+
+for indicie in range(5): #Range valores desde el 0 al 5 sin incluir el 5
+    print("indice:",indicie)
+    print(numeros[indicie])
+    """
+    JAVA
+    for(int i = 0; i < 5; i++){
+    System.out.println(i);
+    System.out.println(numeros[i]);
+    """
