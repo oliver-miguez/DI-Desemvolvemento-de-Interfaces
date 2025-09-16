@@ -16,3 +16,6 @@ else:
         print("Es pequeño pero no tanto")
 
 print("if finalizado ya estamos fuera del if")
+
+#vehiculoTipo = (vehiculo <= 3) ? "Auto" : "Moto"; JAVA
+vehiculoTipo = "Coche" if n1 <= 3 else "Moto" # Python
