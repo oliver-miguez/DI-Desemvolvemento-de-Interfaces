@@ -17,5 +17,6 @@ else:
 
 print("if finalizado ya estamos fuera del if")
 
+#Operador Ternario
 #vehiculoTipo = (vehiculo <= 3) ? "Auto" : "Moto"; JAVA
 vehiculoTipo = "Coche" if n1 <= 3 else "Moto" # Python
