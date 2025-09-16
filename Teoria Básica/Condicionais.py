@@ -36,4 +36,7 @@ while True:
     print(n1)
     n1 += 1
     if n1 == 10:
+        print("true")
         break
+    else:
+        print("false")
