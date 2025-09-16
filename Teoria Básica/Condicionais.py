@@ -11,5 +11,4 @@ else:
     else:
         print("Es pequeño pero no tanto")
 
-
 print("if finalizado ya estamos fuera del if")
