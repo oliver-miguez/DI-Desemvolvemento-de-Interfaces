@@ -30,3 +30,9 @@ while n2 < n1:
 while n2 < 100:
     n2 += 2
     print(n2)
+print("____________________")
+while True:
+    print(n1)
+    n1 += 1
+    if n1 == 10:
+        break
