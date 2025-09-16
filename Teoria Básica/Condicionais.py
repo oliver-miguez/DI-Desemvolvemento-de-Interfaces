@@ -40,3 +40,11 @@ while True:
         break
     else:
         print("false")
+
+print("____________________")
+
+#FOR IN
+numeros = [1,2,3,4,5,1234]
+
+for numero in numeros:
+    print(numero)
