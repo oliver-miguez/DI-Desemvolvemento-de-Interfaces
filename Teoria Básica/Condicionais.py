@@ -26,3 +26,7 @@ n2 = 0
 while n2 < n1:
     n2+=1
     print(n2)
+
+while n2 < 100:
+    n2 += 2
+    print(n2)
