@@ -45,6 +45,9 @@ print("____________________")
 
 #FOR IN
 numeros = [1,2,3,4,5,1234]
-
+suma = 0
 for numero in numeros:
     print(numero)
+    suma = suma + 1
+
+print(suma)
