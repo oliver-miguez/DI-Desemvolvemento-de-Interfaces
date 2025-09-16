@@ -6,6 +6,8 @@ if n1 > 5:
     print("hola")
 elif n1 == 5:
     print("Numero igual")
+elif n1 == 4:
+    print("es un cuatro")
 else:
     print("Adios")
     if n1 < 2:
