@@ -77,4 +77,12 @@ for indicie in range(5): #Range valores desde el 0 al 5 sin incluir el 5
     for(int i = 0; i < 5; i++){
     System.out.println(i);
     System.out.println(numeros[i]);
+    }
     """
+
+    numeros2 = [1, 2, 3, 4, 5, 1234,10,9,123,432]
+
+    for indice in range ( 3,10,3): # Empieza por el tercer valor , 10 es el valor a obtener final, y el ultimo 3 es porque va de 3 en 3
+        print(numeros2[indice])
+
+
