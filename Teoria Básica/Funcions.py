@@ -24,4 +24,5 @@ def persoa (nome,dni,**mais_datos):
     print("O DNI é:",dni)
     for dato in mais_datos.keys():
         print("O dato ",dato,"é ",mais_datos[dato])
+         #con 2 * los datos pueden tener valores especificos, con unos solo no
 persoa("oliver","7862",fecha = 2, nCasa = 17,apelido = "miguez")
