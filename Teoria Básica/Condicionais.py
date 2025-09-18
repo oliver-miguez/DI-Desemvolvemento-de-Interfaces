@@ -85,4 +85,29 @@ for indicie in range(5): #Range valores desde el 0 al 5 sin incluir el 5
     for indice in range ( 3,10,3): # Empieza por el tercer valor , 10 es el valor a obtener final, y el ultimo 3 es porque va de 3 en 3
         print(numeros2[indice])
 
+var= [1,2,3]
+def funcion(parametro):
+    parametro[0]= 3
+    parametro[1]= 4
+    parametro[2]= 5
+funcion(var) # la variable var actuaria como "parametro de la función "funcion"
+print(var)
 
+print("suma:")
+def funcion2(lista):
+    suma = 0
+    for num in lista:
+        suma = suma + num
+        return suma
+print(funcion2(var))
+
+print("suma,media")
+def media(lista):
+    suma = 0
+    for num in lista:
+        suma = suma + num
+    return suma, suma/len(lista)
+_,m = media(var) # solo ejecuta el valor de la derecha del return en este caso suma/len(lista)
+tupla = media(var)
+print(m)
+print(tupla)
