@@ -19,9 +19,18 @@ p.edade = -1
 print(p.edade)
 print(p.nome)
 
-class Traballador (Persona):
-    def __init__(self, nome, dni, edad, NUSS, salario, formacion):
-        super().__init__(nome,dni,edad)
-        self.NUSS = NUSS
-        self.salario = salario
+
+class Posto:
+    def __init__(self,tarea,horario,remuneracion,formacion):
+        self.tarea = tarea
+        self.horario = horario
+        self.remuneracion = remuneracion
         self.formacion = formacion
+
+class Traballador (Posto, Persona):
+    def __init__(self, nome, dni, edad, tarea, horario, remuneracion,formacion,NUSS):
+        super().__init__(nome,dni,edad)
+        super().__init__(tarea,horario,remuneracion,formacion)
+        self.NUSS = NUSS
+
+        
