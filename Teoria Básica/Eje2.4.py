@@ -4,9 +4,9 @@
 
 def conversion():
     fare = 0
-    while fare <= 120:
+    while fare <= 110:
         grados = (fare - 32) * 5 / 9
         fare += 10
-        print(grados)
+        print("Faren:" ,fare,"Grados:", grados)
 conversion()
 
