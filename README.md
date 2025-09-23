@@ -1,0 +1,2 @@
+# Python 
+Tipado dinamico
