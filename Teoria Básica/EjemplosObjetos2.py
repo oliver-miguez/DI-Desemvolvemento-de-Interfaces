@@ -1,3 +1,4 @@
+'''
 """
 Otra forma de plantear el super()
 """
@@ -28,3 +29,4 @@ class Trabajador (Persona,Posto):
 
 t2 = Trabajador("Juan",5679,45,"Soldador",7,2300,"CM","13515/UN")
 print(t2.nome)
+'''
