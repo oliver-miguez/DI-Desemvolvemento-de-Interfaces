@@ -19,7 +19,6 @@ p.edade = -1
 print(p.edade)
 print(p.nome)
 
-
 class Posto:
     def __init__(self,tarea,horario,remuneracion,formacion):
         self.tarea = tarea
