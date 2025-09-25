@@ -83,6 +83,10 @@ class Persona3:
     def __ne__(self,other):
         return self.dni != other.dni
 
+    def __len__(self):
+        return 3
+
+
     # Creación de propiedades para controlar el acceso
     nombre = property(getNombre, setNombre)
     edad = property(getEdad, setEdad)
@@ -100,3 +104,4 @@ print(p3._Persona3__dni)#otra forma
 print(p3)
 
 print(p3==p4) #como solo tenemos comparado el dni , si el dni coincide a pesar de que el resto no será siempre true
+print(p3.__len__()) # retorna 3
