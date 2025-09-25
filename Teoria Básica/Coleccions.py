@@ -70,7 +70,10 @@ d2 = {1:"I",2:"II",3:"III"}
 d3 = dict() #diccionario vacío
 
 l2.append([3,2,1]) #inserta el objeto
-l2.extend([3,2,1]) #inserta los valores del objetos , los valores de la coleccion
+l2.extend([3,2,(1,5,"h"),1]) #inserta los valores del objetos , los valores de la coleccion
+l2.insert(3,"Obxeto no 4º lugar") # añade un objetos en una posicion deseada
+print(l2.count(1))#cuenta y muestra el total de 1 que tiene mi prgrama , en este caso 2
+print(l2.index(3,3,7)) #devuelve el valor de la posicion donde encuentre el valor 3, en este caso la posicion
 print(l2)
 
 
