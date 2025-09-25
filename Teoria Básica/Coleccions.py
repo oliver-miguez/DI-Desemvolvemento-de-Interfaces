@@ -67,5 +67,10 @@ l3 [0] = 1000
 print(t4) # no muestra el 1000 porque ya lo tiene almacenado el valor 1
 print(t4,l3)
 d2 = {1:"I",2:"II",3:"III"}
+d3 = dict() #diccionario vacío
+
+l2.append([3,2,1]) #inserta el objeto
+l2.extend([3,2,1]) #inserta los valores del objetos , los valores de la coleccion
+print(l2)
 
 
