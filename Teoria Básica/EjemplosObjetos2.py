@@ -72,6 +72,17 @@ class Persona3:
         else:
             self.__dni = ""
 
+    def __str__(self):
+        return "Nome: "+ self.nombre + " \nDni: "+ self.dni
+
+    def __eq__(self, other):
+        print("Propio:"+ self.dni)
+        print("Outro: "+ other.dni)
+        return self.dni == self.__dni
+
+    def __ne__(self,other):
+        return self.dni != other.dni
+
     # Creación de propiedades para controlar el acceso
     nombre = property(getNombre, setNombre)
     edad = property(getEdad, setEdad)
@@ -79,9 +90,13 @@ class Persona3:
 
 
 p3 = Persona3("Pepe", "36456789", 19)
+p4 = Persona3("Pepe", "36456789", 19)
 print(p3.dni)
-p3.dni = "12345678X"  # Si se cambia y no cumple la condicion del set no funciona
+#p3.dni = "12345678X"  # Si se cambia y no cumple la condicion del set no funciona
 print(p3.dni)
 p3.edad = 120 # Intenta asignar una edad inválida
 print(p3.edad) # El setter lo corrige a 0
 print(p3._Persona3__dni)#otra forma
+print(p3)
+
+print(p3==p4) #como solo tenemos comparado el dni , si el dni coincide a pesar de que el resto no será siempre true
