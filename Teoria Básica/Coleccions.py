@@ -73,7 +73,16 @@ l2.append([3,2,1]) #inserta el objeto
 l2.extend([3,2,(1,5,"h"),1]) #inserta los valores del objetos , los valores de la coleccion
 l2.insert(3,"Obxeto no 4º lugar") # añade un objetos en una posicion deseada
 print(l2.count(1))#cuenta y muestra el total de 1 que tiene mi prgrama , en este caso 2
-print(l2.index(3,3,7)) #devuelve el valor de la posicion donde encuentre el valor 3, en este caso la posicion
 print(l2)
+print(l2.index(3,3,7)) #devuelve el valor de la posicion donde encuentre el valor 3, en este caso la posicion
+extraido = l2.pop(5) #devuelve el valor de la lista en la posicion 5 y lo elimina
+print("Valor extraido:", extraido)
+
+l2.remove(3) #elimina la primera coincidencia con ese valor de la lista
+print(l2)
+l2.reverse() # da la vuelta a la lista
+print(l2)
+l3 = l2[::-1] # l2 sigue igual , pero invertida
+print(l3)
 
 
