@@ -65,6 +65,7 @@ t3 = tuple() #la tupla vacía no sirve para nada
 t4 = tuple(l3) #se puede crear una tupla a partir de una lista
 l3 [0] = 1000
 print(t4) # no muestra el 1000 porque ya lo tiene almacenado el valor 1
+print(t4,l3)
 d2 = {1:"I",2:"II",3:"III"}
 
 
