@@ -105,3 +105,6 @@ print(p3)
 
 print(p3==p4) #como solo tenemos comparado el dni , si el dni coincide a pesar de que el resto no será siempre true
 print(p3.__len__()) # retorna 3
+
+lista = []
+print(lista.__len__()) #retorna 0 porque no tiene valores añadidos la lista / las listas tienen su propio len

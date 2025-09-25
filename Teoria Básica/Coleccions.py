@@ -57,6 +57,14 @@ d[3] = "three"
 print(d[3])
 
 
+l2 = [1,2,3]
+l3 = list([1,2,3])#lista
+l4 = list((1,2,3))#tupla
 
+t3 = tuple() #la tupla vacía no sirve para nada
+t4 = tuple(l3) #se puede crear una tupla a partir de una lista
+l3 [0] = 1000
+print(t4) # no muestra el 1000 porque ya lo tiene almacenado el valor 1
+d2 = {1:"I",2:"II",3:"III"}
 
 
