@@ -192,7 +192,7 @@ def meu_decorador(funcion_orixinal):
         print("Instruccions de antes da funcion orixinal")
         funcion_orixinal()
         print("Instruccions para despois da funcion orixinal")
-    return funcion_envol
+    return funcion_envolvente()
     vente()
 
 
