@@ -133,6 +133,8 @@ l2 =  filter(es_par,l6)#compara los números pares similares a los de l6
 for n in l2:
     print(n)
 #otra forma
-l2 = filter(lambda n: n%2 == 0)
+l2 = filter(lambda n: n%2 == 0,l6)
+
+#filter,map,reduce importantes en python2 pero prescindibles en python3
 
 
