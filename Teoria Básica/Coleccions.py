@@ -183,6 +183,8 @@ l8 = [n for n in x3] # almacena los numeros generados
 
 print(l8)
 
+#Decoradores
+
 
 
 
