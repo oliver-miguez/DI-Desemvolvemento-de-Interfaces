@@ -120,3 +120,19 @@ def saudar(lingua):
 f = saudar("it") # para dar la referencia a la funcion de saudo
 print(f)#solo muestra la referencia
 f() #Muestra el valor de la referencia, mostrando CHIAO
+saudar("en")() #Otra forma
+
+
+#Filtrar
+l6 = [1,2,3,4]
+
+def es_par(n):
+    return n%2 == 0
+
+l2 =  filter(es_par,l6)#compara los números pares similares a los de l6
+for n in l2:
+    print(n)
+#otra forma
+l2 = filter(lambda n: n%2 == 0)
+
+
