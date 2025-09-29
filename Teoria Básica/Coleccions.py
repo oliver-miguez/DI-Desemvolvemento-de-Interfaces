@@ -174,9 +174,14 @@ def meu_range(fin ,inicio = 0,salto=1):
         while inicio <= fin :
             yield inicio # retorna o valor pero sigue ejecutando el while a diferencia del return que me sacaria fuera del bucle
             inicio = inicio + salto
-x3 = meu_range(100,2,2)
-for n in x3:
-    print(n)
+x3 = meu_range(100,2,15)
+
+l8 = [n for n in x3] # almacena los numeros generados
+
+#for n in x3:
+#    print(n)
+
+print(l8)
 
 
 
