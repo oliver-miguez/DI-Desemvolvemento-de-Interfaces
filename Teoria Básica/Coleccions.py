@@ -98,3 +98,25 @@ def altura(persoa):
 
 taboa_alturas.sort(key=altura)
 print(taboa_alturas)
+
+
+def saudar(lingua):
+    def saudar_es():
+        print("Hola")
+    def saudar_gl():
+        print("Ola")
+    def saudar_en():
+        print("Hello")
+    def saudar_it():
+        print("Chiao")
+    #Diccionario
+    func_saudo = {"es": saudar_es, #no ponemos parentesis porque solo hacemos referencia a ellas , no las ejecutamos, si le ponemos asi: saudar_es() -> Dará error
+
+                  "gl": saudar_gl,
+                  "en": saudar_en,
+                  "it": saudar_it
+                  }
+    return func_saudo[lingua]
+f = saudar("it") # para dar la referencia a la funcion de saudo
+print(f)#solo muestra la referencia
+f() #Muestra el valor de la referencia, mostrando CHIAO
