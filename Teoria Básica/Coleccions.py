@@ -161,7 +161,13 @@ z2 = [n*s for s in m
       if n<4]
 print(z2)
 
+#Generadores
+x2 = (n**2 for n in l7)#Objeto generador /esto no es una lista / genera datos en el instante que se necesite
+print(x2) # solo da la referencia al generador
 
+#Muestra los numeros del generador
+for n in x2:
+    print(n)
 
 
 
