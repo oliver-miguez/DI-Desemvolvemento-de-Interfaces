@@ -183,7 +183,7 @@ l8 = [n for n in x3] # almacena los numeros generados
 
 print(l8)
 
-#Decoradores , añaden funcionalidades a una función si modificar la original
+#Decoradores , añaden funcionalidades a una función si modificar la original,suelen usarse para testeos de metodos que aun no tienen
 def funcion_necesita_decoracion():
     print("Preciso decoracion")
 
@@ -192,10 +192,18 @@ def meu_decorador(funcion_orixinal):
         print("Instruccions de antes da funcion orixinal")
         funcion_orixinal()
         print("Instruccions para despois da funcion orixinal")
-    return funcion_envolvente()
-    vente()
+    return funcion_envolvente # no se devuelven con parentesis
 
+# Una forma de mostrarla con la decoracion
+#funcion_decorada = meu_decorador(funcion_necesita_decoracion) # no le añadimos los parentesis en la variable funcion orixinal
+#funcion_decorada()
 
+#Otra forma
+@ meu_decorador
+def funcion_necesaria_decoracion():
+    print("Preciso decoracion")
+
+funcion_necesaria_decoracion()
 
 
 
