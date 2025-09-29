@@ -84,5 +84,17 @@ l2.reverse() # da la vuelta a la lista
 print(l2)
 l3 = l2[::-1] # l2 sigue igual , pero invertida
 print(l3)
+l4 = [3,5,6,3,10,23,2]
+#print(l2.sort(reverse=True))#Ordena la lista de manera inversa
 
+l5 = ["Un","Dous","Tres", "Catro","Cinco","Seis"]
+print(l5.sort(key=len))
 
+#Ordenar en base a la altura
+taboa_alturas = [("Manuel",1.82), ("Pepe",2.05), ("Ana", 1.76) ]
+
+def altura(persoa):
+    return persoa[1]
+
+taboa_alturas.sort(key=altura)
+print(taboa_alturas)
