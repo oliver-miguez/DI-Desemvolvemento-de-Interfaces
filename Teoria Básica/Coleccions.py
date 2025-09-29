@@ -137,6 +137,7 @@ l2 = filter(lambda n: n%2 == 0,l6)
 
 #filter,map,reduce importantes en python2 pero prescindibles en python3
 #Comprension de listas para sustituir a filter , map , reduce
+#Transformaciones
 l7 = [1,2,3,4,5]
 l3 = [n+1 for n in l7] # le sumamos 1 a cada elemento de l cambia los valores de l3
 print(l3)
