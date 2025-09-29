@@ -169,10 +169,14 @@ print(x2) # solo da la referencia al generador
 for n in x2:
     print(n)
 
-def meu_range(y ,x = 0,u=1):
-        while x <= y :
-            yield x # retorna o valor pero sigue ejecutando el while a diferencia del return que me sacaria fuera del bucle
-            x = x + u
+# Podemos crear nuestros propios generadores
+def meu_range(fin ,inicio = 0,salto=1):
+        while inicio <= fin :
+            yield inicio # retorna o valor pero sigue ejecutando el while a diferencia del return que me sacaria fuera del bucle
+            inicio = inicio + salto
+x3 = meu_range(100,2,2)
+for n in x3:
+    print(n)
 
 
 
