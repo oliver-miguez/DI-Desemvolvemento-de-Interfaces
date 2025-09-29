@@ -183,7 +183,18 @@ l8 = [n for n in x3] # almacena los numeros generados
 
 print(l8)
 
-#Decoradores
+#Decoradores , añaden funcionalidades a una función si modificar la original
+def funcion_necesita_decoracion():
+    print("Preciso decoracion")
+
+def meu_decorador(funcion_orixinal):
+    def funcion_envolvente():
+        print("Instruccions de antes da funcion orixinal")
+        funcion_orixinal()
+        print("Instruccions para despois da funcion orixinal")
+    return funcion_envol
+    vente()
+
 
 
 
