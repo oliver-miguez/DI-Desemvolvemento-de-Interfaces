@@ -144,3 +144,37 @@ print(l3)
 
 l4 = [n for n in l7 if n % 2 == 0] # le da a l4 los valores pares de l7
 print(l4)
+
+
+#ignorando los valoes mayores a cuatro transforma los valores de la lista en "+" y "*"
+m = ['+', "*"]
+z = []
+for s in m:
+    for n in l7:
+        if n<4:
+            z.append(n*s)
+print(z)
+
+#otra forma con la transformacion
+z2 = [n*s for s in m
+      for n in l7
+      if n<4]
+print(z2)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
