@@ -108,3 +108,45 @@ print(p3.__len__()) # retorna 3
 
 lista = []
 print(lista.__len__()) #retorna 0 porque no tiene valores añadidos la lista / las listas tienen su propio len
+
+
+#Excepciones
+class ErroIdade(Exception):
+    def __init__(self,edade):
+        self.edade = edade
+    def __str__(self):
+        return "Erro edade equivocada"+str(self.edade)+ " incorrecta"
+
+class Persona4:
+    """Clase para definir una persona"""
+    def __init__(self,nome,dni,edade,**outros):
+        self.nome = nome
+        self.dni = dni
+        self.edade = self.comprobarEdade(edade)
+
+    def comprobarEdade(self,edade):
+        if (edade>=0) and edade <100:
+            return edade #id
+        else:
+            return 0
+
+class Posto:
+    def __init__(self,tarea,horario,salario,formacion,**outros):
+        self.tarea = tarea
+        self.horario = horario
+        self.salario = salario
+        self.formacion = formacion
+
+class Trabajador (Persona,Posto):
+    def __init__(self,nome,dni,edade,tarea,horario,salario,formacion,NUSS):
+        super().__init__(nome=nome,dni=dni,edade=edade,tarea=tarea,horario=horario,salario=salario,formacion=formacion) #aqui el super recoge de las dos clases
+        self.NUSS = NUSS
+
+t2 = Trabajador("Juan",5679,45,"Soldador",7,2300,"CM","13515/UN")
+print(t2.nome)
+
+try:
+    pepe = Persona4("Pepe","123456",14)
+    juan = Persona4("Juan","1123123","167")
+except ErroIdade as e:
+    print("Erro na creacion da persoa"+ str(e))

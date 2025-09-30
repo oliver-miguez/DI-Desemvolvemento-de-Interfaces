@@ -256,3 +256,39 @@ log('ficheiro.log')(suma)(2,2) #otra forma para crear la suma, etc
 
 
 
+# EXCEPCIONS
+def division(a, b):
+    return a/b
+
+n1 = 1
+n2 = 2
+
+try:
+    resultado = division(n1,n2)
+except (ZeroDivisionError,TypeError) as e:
+    print("Erro ao realizar a division"+ str(e))
+else:
+    print("O resultado é: "+str(resultado))
+finally:
+    print("Pode que si ou non, se realizara a división ")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
