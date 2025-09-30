@@ -225,13 +225,33 @@ sauda()
 #Tambien con está: require_autentication(sauda)()
 
 
+#crea un ficheiro añadiendo los datos del calculo de la suma , resta y multiplicación
+def log (ficheiro_log):
+    def decorador_log(func):
+        def decorador_function(*args,**kwargs):
+            with open(ficheiro_log,'a') as ficheiro_aberto:
+                saida = func(*args, **kwargs)
+                ficheiro_aberto.write(f"{saida}\n")
+        return decorador_function
+    return decorador_log
 
+@log('ficheiro.log')
+def suma(a, b):
+    return a + b
 
+@log('ficheiro.log')
+def resta(a, b):
+    return a - b
 
+@log('ficheiro.log')
+def mult (a, b):
+    return  a * b
 
+suma(1,1)
+resta(7,23)
+mult(2,9)
 
-
-
+log('ficheiro.log')(suma)(2,2) #otra forma para crear la suma, etc
 
 
 
