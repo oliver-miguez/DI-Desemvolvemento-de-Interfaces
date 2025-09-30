@@ -205,7 +205,24 @@ def funcion_necesaria_decoracion():
 
 funcion_necesaria_decoracion()
 
+# AUTORIZAR
 
+autenticado = True
+def require_autenticacion(f):
+    def funcion_decorada(*args, **kwargs): # Con este codigo de aqui hacemos que la funcion necesite autentificación
+        if autenticado:
+            return f(*args,**kwargs)
+        else:
+            print("Erro: O usuario non está autorizado")
+
+    return funcion_decorada
+
+@require_autenticacion # con esta marca damos la autorización
+def sauda():
+    print("hola")
+
+sauda()
+#Tambien con está: require_autentication(sauda)()
 
 
 
