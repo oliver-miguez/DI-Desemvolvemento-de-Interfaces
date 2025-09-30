@@ -231,6 +231,7 @@ def log (ficheiro_log):
         def decorador_function(*args,**kwargs):
             with open(ficheiro_log,'a') as ficheiro_aberto:
                 saida = func(*args, **kwargs)
+                ficheiro_aberto.write(f"{func.__name__} = ") #para modificar el estilo en el que se muestra en el texto
                 ficheiro_aberto.write(f"{saida}\n")
         return decorador_function
     return decorador_log
