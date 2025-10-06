@@ -14,3 +14,7 @@ Empaquetado.UnhaClase()
 # 2º Forma de llamar métodos del módulo importado Empaquetado
 from Empaquetado import unha_funcion # Permite utilizar la función "unha_funcion()" sin llamar directamente a la importación para usarla
 unha_funcion()
+
+
+if  __name__ == "__main__": # De esta forma podremos usar los métodos del import del módulo en la main de esta nueva clase
+    unha_funcion()
