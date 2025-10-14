@@ -30,6 +30,12 @@ class Ventana1 (QMainWindow):
         self.hide() # se oculta la ventana 1
         self.ventana_secundaria.show() # muestra la ventana 2
 
+    """
+    Se ejecuta cuando se presiona el botón mayúsculas
+    """
+    def boton_mayusculas_presionado(self):
+        pass
+        # TODO , por acabar
 
     """
     Define la estructura de la ventana
@@ -60,6 +66,11 @@ class Ventana1 (QMainWindow):
 
         btnCambio = QPushButton("Cambiar") # Botón para cambiar de escena
         btnCambio.clicked.connect(self.cambio_ventana) # Crea una conexión con la función "cambio_ventana"
+
+        btnMayusculas = QPushButton("Mayúsculas")
+        btnMayusculas.setCheckable(True)
+        btnMayusculas.toggle().connect(self.boton_mayusculas_presionado)
+        self.mayusculas = True
 
         caixaV = QVBoxLayout() # Almacenar
 
