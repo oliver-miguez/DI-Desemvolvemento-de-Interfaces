@@ -1,7 +1,8 @@
 import sys
 import Ventana2
 from  PyQt6.QtCore import Qt
-from PyQt6.QtWidgets import (QApplication, QMainWindow, QPushButton, QLabel, QLineEdit, QVBoxLayout, QWidget, QCheckBox)
+from PyQt6.QtWidgets import (QApplication, QMainWindow, QPushButton, QLabel, QLineEdit, QVBoxLayout, QWidget, QCheckBox,
+                             QHBoxLayout)
 
 """
 Ventana 1 del programa
@@ -67,12 +68,22 @@ class Ventana1 (QMainWindow):
             self.mayusculas = False
 
     """
+    Para modificar el texto cuando se selecciones el checked ocultar
+    """
+    def on_ocultar_toggled(self):
+        self.mensaje_guardado = self.txtSaudo.text() # Guarda el mensaje en una variable
+        if self.chkOculto.isChecked():
+            self.txtSaudo.setText("*" * len(self.mensaje_guardado)) # Por cada letra del mensaje pone un *
+        else:
+            self.txtSaudo.setText(self.mensaje_guardado) # En caso contrario muestra el mensaje
+    """
     Define la estructura de la ventana
     """
     def __init__(self):
         super().__init__()
 
         # Referencias
+        self.mensaje_guardado = None
         self.ventana_secundaria = None # Referencia para usar en "cambio_ventana"
 
         # Configuración de tamaño y título de esta ventana
@@ -112,12 +123,25 @@ class Ventana1 (QMainWindow):
         self.btnMayusculas.toggled.connect(self.boton_mayusculas_presionado)
         self.mayusculas = True
         """
+
+        # Para ordenar los bloques de manera horizontal
+        caixaH = QHBoxLayout()
+
+
         # Configuración del check de mayúsculas
         # En vez de ser un botón como el anterior ( el mudado ) es un recuadro de check
         self.chkMaiusculas = QCheckBox("MAYÚSCULAS")
         self.chkMaiusculas.setChecked(True) # Aparece de principio seleccionado
         self.chkMaiusculas.toggled.connect(self.on_chk_mayusculas_toogled)
         self.mayusculas = True
+
+        self.chkOculto = QCheckBox("Ocultar")
+        self.chkOculto.setChecked(False)
+        self.chkOculto.toggled.connect(self.on_ocultar_toggled)
+
+        # Añade al contenedor horizontal
+        caixaH.addWidget(self.chkMaiusculas)
+        caixaH.addWidget(self.chkOculto)
 
         # Almacenar el contenido de botones, labels , etc
         caixaV = QVBoxLayout()
@@ -128,7 +152,7 @@ class Ventana1 (QMainWindow):
         caixaV.addWidget(btnSaudo)
         caixaV.addWidget(btnCambio)
         #caixaV.addWidget(self.btnMayusculas) # Metodo mudado
-        caixaV.addWidget(self.chkMaiusculas)
+        caixaV.addLayout(caixaH)
 
         # Almacena todos los caixaV
         container = QWidget()
