@@ -1,4 +1,6 @@
 import sys
+from time import sleep
+
 import Ventana2
 from  PyQt6.QtCore import Qt
 from PyQt6.QtWidgets import (QApplication, QMainWindow, QPushButton, QLabel, QLineEdit, QVBoxLayout, QWidget, QCheckBox,
@@ -12,7 +14,9 @@ class Ventana1 (QMainWindow):
     Modifica el texto principal y vacía el valor de la barra donde se introducen datos
     """
     def on_btnSaudo_clicked(self):
-        nome = self.txtSaudo.text() # crea una variable nome con formato de texto
+        nome = self.txtSaudo.text()
+        if self.chkOculto.isChecked():
+            nome = self.nomeOculto # crea una variable nome con formato de texto
         if self.txtSaudo.text() != "": # si es nulo el valor introducido
             if self.txtSaudo.text().isdigit(): # o es un número
                 self.txtSaudo.clear() # muestra un error
@@ -21,6 +25,8 @@ class Ventana1 (QMainWindow):
                 self.txtSaudo.clear() # Si no muestra un texto con el nombre añadido
                 #self.lblEtiqueta.setText("Ola "+ nome + " encantado/a de coñecerte")
                 self.lblEtiqueta.setText(nome)
+                self.nomeOculto = ''
+                self.txtSaudo.setText('')
 
     """
     Permite cambiar de ventana
@@ -54,6 +60,17 @@ class Ventana1 (QMainWindow):
         else:
             self.txtSaudo.setText(self.txtSaudo.text().lower())
 
+        nome = self.txtSaudo.text() # Instancia del texto
+        if self.chkOculto.isChecked():
+            for i, caracteres in enumerate(nome): # Recorre cada char de la palabra
+                if caracteres != "*": # Cuando uno de los chars es diferente a "*"
+                    if len(self.nomeOculto )== i: # Si coincide lon el tamaño del nombre oculto
+                        self.nomeOculto = self.nomeOculto + caracteres # Le da al nombre oculto el character del texto
+                        break
+                    else:
+                        self.nomeOculto = self.nomeOculto[:i] + caracteres + self.nomeOculto[i+1:]
+            self.txtSaudo.setText('*'*len(self.nomeOculto))
+
     """
     Es lo mismo que el método mudado pero ahora en vez de un botón normal es un check
     """
@@ -71,11 +88,12 @@ class Ventana1 (QMainWindow):
     Para modificar el texto cuando se selecciones el checked ocultar
     """
     def on_ocultar_toggled(self):
-        self.mensaje_guardado = self.txtSaudo.text() # Guarda el mensaje en una variable
         if self.chkOculto.isChecked():
-            self.txtSaudo.setText("*" * len(self.mensaje_guardado)) # Por cada letra del mensaje pone un *
+            self.nomeOculto = self.txtSaudo.text()
+            self.txtSaudo.setText('*' * len(self.nomeOculto))
         else:
-            self.txtSaudo.setText(self.mensaje_guardado) # En caso contrario muestra el mensaje
+            self.txtSaudo.setText(self.nomeOculto)
+            self.nomeOculto = ''
     """
     Define la estructura de la ventana
     """
@@ -83,6 +101,7 @@ class Ventana1 (QMainWindow):
         super().__init__()
 
         # Referencias
+        self.nomeOculto = ""
         self.mensaje_guardado = None
         self.ventana_secundaria = None # Referencia para usar en "cambio_ventana"
 
