@@ -6,13 +6,13 @@ from PyQt6.QtCore import Qt
 from PyQt6.QtWidgets import (QApplication, QMainWindow, QPushButton, QLabel, QLineEdit, QVBoxLayout, QWidget, QCheckBox,
                              QHBoxLayout, QListView, QGridLayout, QListWidget)
 
-class InterfazGrind(QMainWindow):
+class ListaIntercambiable(QMainWindow):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("Primera ventana con QT")
         maia = QGridLayout()
 
-        listaFollas = ["Follas1","Follas2", "Follas3"] # Crea las entradas a escribir, utilizadas por el model
+        listaFollas = [["Follas 1","F"],["Documento 1","D"], ["Follas3","F"]] # Crea las entradas a escribir, utilizadas por el model
         self.modeloListaVisibles = ModeloLista.ModeloFollas(listaFollas) # Aplica el model en base a los datos del array
         self.modeloListaOcultos = ModeloLista.ModeloFollas()
 
@@ -73,5 +73,5 @@ class InterfazGrind(QMainWindow):
 
 if __name__ == "__main__":
     aplicacion = QApplication(sys.argv)
-    ventana = InterfazGrind()
+    ventana = ListaIntercambiable()
     aplicacion.exec()

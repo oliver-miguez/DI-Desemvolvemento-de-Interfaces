@@ -1,6 +1,10 @@
 import sys
 
 from PyQt6.QtCore import  Qt, QAbstractListModel
+from PyQt6.QtGui import QImage
+
+doc = QImage ('documento.png')
+fol = QImage('follasCalculo.png')
 
 class ModeloFollas (QAbstractListModel):
     def __init__(self, follas = None):
@@ -14,8 +18,14 @@ class ModeloFollas (QAbstractListModel):
     # DecorationRole, EditRole, ToolTipRole
     def data(self,indice,rol):
         if rol == Qt.ItemDataRole.DisplayRole:
-            texto = self.follas [indice.row()]
+            texto,_ = self.follas [indice.row()] # el ,_ sirve para mostrar todo lo del array
             return texto
+        if rol == Qt.ItemDataRole.DecorationRole:
+            _, tipo = self.follas[indice.row()]
+            if tipo == "F":
+                return fol
+            if tipo == "D":
+                return doc
 
     # Cuenta los datos almacenados en la lista de "self.follas"
     # Devuelve la dimensión de la lista
