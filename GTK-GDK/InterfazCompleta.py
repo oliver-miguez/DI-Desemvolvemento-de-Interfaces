@@ -10,10 +10,11 @@ class InterfazCompleta(Gtk.Window):
         caixaGrid = Gtk.Grid()
 
         # PRIMERA CAJA
+
         caixaH = Gtk.Box(orientation = Gtk.Orientation.HORIZONTAL, spacing = 10) # Caja horizontal que recoge las dos columnas
         caixaV1 = Gtk.Box(orientation = Gtk.Orientation.VERTICAL, spacing = 10) # Columna vertical 1
         caixaV2 = Gtk.Box(orientation = Gtk.Orientation.VERTICAL, spacing = 10) # Columna vertical 2
-
+        caixaGrid.add(caixaH)
         frame = Gtk.Frame() # Crear un elemento para el marco exterior, tipo frame para que tenga un estilo específico
         frame.set_label("Panel") # Añade un nombre al marco
 
@@ -60,13 +61,14 @@ class InterfazCompleta(Gtk.Window):
         # SEGUNDA CAJA
         caixaTag = Gtk.Notebook() # Crea un contenedor con tags
         caixaH2 = Gtk.Box(orientation = Gtk.Orientation.HORIZONTAL, spacing = 10) # Caja horizontal que recoge el contenedor de Tags
-
+        caixaGrid.add(caixaTag)
         caixaTag.set_border_width(5) # Establece el tamaño de cada uno de los tab
 
         # Añadiendo objetos a la ventana de Gtk.Notebook 1
         caixaVChkButtons = Gtk.Box(orientation = Gtk.Orientation.VERTICAL, spacing = 10) # Columna vertical para los botones
         almacenBotones = Gtk.Box(orientation = Gtk.Orientation.HORIZONTAL,spacing = 10) # Almacena los botones check
-        caixaTab1 = Gtk.Box(orientation = Gtk.Orientation.VERTICAL, spacing = 10)
+        caixaTab1 = Gtk.Box(orientation = Gtk.Orientation.VERTICAL, spacing = 10) # Primera ventana del notebook
+        caixaTab2 = Gtk.Box(orientation = Gtk.Orientation.VERTICAL, spacing = 10) # Segunda ventana del notebook
 
         # Botones checkeables
         check_button1 = Gtk.CheckButton(label = "Boton 1")
@@ -90,33 +92,50 @@ class InterfazCompleta(Gtk.Window):
         caixaTab1.add(almacenBotones) # Pagina 1
 
         caixaTag.append_page(caixaTab1) # Añade al notebook la primera ventana
+        caixaTag.append_page(caixaTab2) # Añade una segunda ventana al notebook
 
         # Añade la caja que recoge todos los valores de notebook en una caja horizontal
         # Para colocarla al lado de la primera caja
         caixaH2.add(caixaTag)
 
 
-        # Tercera Caja
+        # TERCERA CAJA
+        txvCaixaTexto = Gtk.TextView() # Crea un bloque de texto
+        # Lo añade al grid en la posicion indicada
+        caixaGrid.attach_next_to(txvCaixaTexto,caixaTag,Gtk.PositionType.BOTTOM,1,1)
 
-        # Cuarta caja
+        # CUARTA CAJA
+        caixaV3 = Gtk.Box(orientation = Gtk.Orientation.VERTICAL, spacing = 2)
+        caixaGrid.attach_next_to(caixaV3,txvCaixaTexto,Gtk.PositionType.LEFT,1,1)
+        txtCaixaTexto = Gtk.Entry()
+        txtCaixaPassw = Gtk.Entry()
+        txtCaixaPassw.set_invisible_char('*')
+        txtCaixaPassw.set_visibility(False)
+        cmbCombo = Gtk.ComboBox()
+        cmbCombo.set_model(store)
+        celda2 = Gtk.CellRendererText()
+        cmbCombo.pack_start(celda2,True)
+        cmbCombo.add_attribute(celda2,"text", 0)
+        caixaV3.pack_start(txtCaixaTexto,True,True,2)
+        caixaV3.pack_start(txtCaixaPassw ,True,True,2)
+        caixaV3.pack_start(cmbCombo,True,True,2)
+
+
+
 
         # Frame Global
         frameGlobal = Gtk.Frame() # Crea un frame total
         frameGlobal.set_label("PanelCaption")
+        frameGlobal.set_halign(Gtk.Align.CENTER)
+        frameGlobal.set_valign(Gtk.Align.CENTER)
 
-        # Recoge cada una de las cajas de esta interfaz y las muestra
-        contenedorGlobal = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
-        contenedorGlobal.pack_start(caixaH,True,True,10)
-        contenedorGlobal.pack_start(caixaH2,True,True,10)
 
-        # Las añade al frame global para que se integre al cuadro "PanelCaption"
-        frameGlobal.add(contenedorGlobal)
+        frameGlobal.add(caixaGrid)
 
-        # Muestra lo integrado hasta ahora
-        caixaGrid.add(frameGlobal)
+
 
         # Para mostrarlo
-        self.add(caixaGrid)
+        self.add(frameGlobal)
 
         self.connect("delete-event",Gtk.main_quit)
         self.show_all()
