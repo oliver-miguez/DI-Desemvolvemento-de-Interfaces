@@ -23,7 +23,7 @@ class InterfazCompleta(Gtk.Window):
         store.append(["Prueba"])
         store.append(["Otra Cosa"])
 
-        # Crear TreeView para mostrar los datos del ListStore
+        # Crear TreeView para mostrar los datos del ListStore(siempre igual)
         treeview = Gtk.TreeView(model=store)
         renderer = Gtk.CellRendererText()
         column = Gtk.TreeViewColumn("Contido", renderer, text=0)
@@ -43,18 +43,58 @@ class InterfazCompleta(Gtk.Window):
         button3 = Gtk.RadioButton.new_with_label_from_widget(button1, "Button 3")
         caixaV2.add(button3)
 
-        boton = Gtk.Button("Button")
-        caixaV2.add(boton)
+        #Boton que siempre aparece al final del cuadro
+        boton = Gtk.Button(label = "Button")
+        caixaV2.pack_end(boton,False,False,2)
 
+        # Recoge el contenido de las cajas verticales
         contido = Gtk.Box(orientation = Gtk.Orientation.HORIZONTAL, spacing = 10) # Caja horizontal que recoge las dos columnas
 
         contido.pack_start(caixaV1, True, True, 10)
         contido.pack_start(caixaV2, True, True, 10)
 
+        # Lo añade al frame "Panel"
         frame.add(contido)
-        caixaH.pack_start(contido, True, True, 10)
+        caixaH.pack_start(frame, True, True, 10)
 
         # SEGUNDA CAJA
+        caixaTag = Gtk.Notebook() # Crea un contenedor con tags
+        caixaH2 = Gtk.Box(orientation = Gtk.Orientation.HORIZONTAL, spacing = 10) # Caja horizontal que recoge el contenedor de Tags
+
+        caixaTag.set_border_width(5) # Establece el tamaño de cada uno de los tab
+
+        # Añadiendo objetos a la ventana de Gtk.Notebook 1
+        caixaVChkButtons = Gtk.Box(orientation = Gtk.Orientation.VERTICAL, spacing = 10) # Columna vertical para los botones
+        almacenBotones = Gtk.Box(orientation = Gtk.Orientation.HORIZONTAL,spacing = 10) # Almacena los botones check
+        caixaTab1 = Gtk.Box(orientation = Gtk.Orientation.VERTICAL, spacing = 10)
+
+        # Botones checkeables
+        check_button1 = Gtk.CheckButton(label = "Boton 1")
+        check_button2 = Gtk.CheckButton(label = "Boton 2")
+        check_button3 = Gtk.CheckButton(label = "Boton 3")
+        check_button3.set_sensitive(False) # Deshabilita el botón 3
+
+        # Los guarda para luego mostrarlos
+        caixaVChkButtons.add(check_button1)
+        caixaVChkButtons.add(check_button2)
+        caixaVChkButtons.add(check_button3)
+
+        # Barra que se mueve(no se como llamarla)
+        slider = Gtk.Scale.new_with_range(Gtk.Orientation.HORIZONTAL, 0, 100, 1)
+        caixaTab1.pack_end(slider,False,False,2)
+
+
+        # Los recoge en el almacén de botones
+        almacenBotones.add(caixaVChkButtons)
+
+        caixaTab1.add(almacenBotones) # Pagina 1
+
+        caixaTag.append_page(caixaTab1) # Añade al notebook la primera ventana
+
+        # Añade la caja que recoge todos los valores de notebook en una caja horizontal
+        # Para colocarla al lado de la primera caja
+        caixaH2.add(caixaTag)
+
 
         # Tercera Caja
 
@@ -63,10 +103,17 @@ class InterfazCompleta(Gtk.Window):
         # Frame Global
         frameGlobal = Gtk.Frame() # Crea un frame total
         frameGlobal.set_label("PanelCaption")
-        frameGlobal.add(caixaH)
 
+        # Recoge cada una de las cajas de esta interfaz y las muestra
+        contenedorGlobal = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
+        contenedorGlobal.pack_start(caixaH,True,True,10)
+        contenedorGlobal.pack_start(caixaH2,True,True,10)
+
+        # Las añade al frame global para que se integre al cuadro "PanelCaption"
+        frameGlobal.add(contenedorGlobal)
+
+        # Muestra lo integrado hasta ahora
         caixaGrid.add(frameGlobal)
-
 
         # Para mostrarlo
         self.add(caixaGrid)
