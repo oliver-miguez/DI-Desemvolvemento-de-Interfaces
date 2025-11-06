@@ -5,6 +5,32 @@ gi.require_version("Gtk","3.0")
 from gi.repository import Gtk, Gdk, GObject
 
 class InterfazCompleta(Gtk.Window):
+
+    def on_cmbCombo_changed(self,combo):
+        punteiro = combo.get_active_iter() # Revisa cuál es la posición del elemento seleccionado
+        if punteiro is not None: # Si no está vacío
+            modelo = combo.get_model() # Recoge el modelo del combo
+            elemento = modelo[punteiro][0] # ?
+            bufer = self.txvCaixaTexto.get_buffer()
+            bufer.insert(bufer.get_end_iter(), "\n Elemento seleccionado del comboBox: "+ elemento, -1)
+    """
+     Administra el funcionamiento de los radius Buttons
+     radioButton: coge una referencia al radioButton que se presionó
+     numero: Identificador de cada botón
+    """
+    def on_radiusButton_toggled(self,radioButton, numero):
+        if radioButton.get_active(): # Sí se presiona el botón
+            # Escribe dentro del textBox un texto que hace referencia a cada botón
+            bufer = self.txvCaixaTexto.get_buffer()
+            bufer.insert(bufer.get_end_iter(),"\n Selecionado o boton " + numero, -1 )
+            """
+            Otra forma de hacerlo:
+            texto = bufer.get_text(bufer.get_start_iter(), bufer.get_end_iter(), False)
+            texto = texto + "\n Selecionado o boton "+ numero
+            bufer.set_text(texto)
+            """
+
+
     def __init__(self):
         super().__init__()
         caixaGrid = Gtk.Grid()
@@ -36,12 +62,15 @@ class InterfazCompleta(Gtk.Window):
 
         # Botones Redondeados
         button1 = Gtk.RadioButton.new_with_label_from_widget(None, "Button 1")
+        button1.connect("toggled",self.on_radiusButton_toggled, "1") # Creamos una señal para integrar funcionalidad, los numeros son identificadores
         caixaV2.add(button1) # Añade los botones a la caja vertical
 
         button2 = Gtk.RadioButton.new_with_label_from_widget(button1, "Button 2")
+        button2.connect("toggled",self.on_radiusButton_toggled, "2")
         caixaV2.add(button2)
 
         button3 = Gtk.RadioButton.new_with_label_from_widget(button1, "Button 3")
+        button3.connect("toggled",self.on_radiusButton_toggled, "3")
         caixaV2.add(button3)
 
         #Boton que siempre aparece al final del cuadro
@@ -100,19 +129,20 @@ class InterfazCompleta(Gtk.Window):
 
 
         # TERCERA CAJA
-        txvCaixaTexto = Gtk.TextView() # Crea un bloque de texto
+        self.txvCaixaTexto = Gtk.TextView() # Crea un bloque de texto
         # Lo añade al grid en la posicion indicada
-        caixaGrid.attach_next_to(txvCaixaTexto,caixaTag,Gtk.PositionType.BOTTOM,1,1)
+        caixaGrid.attach_next_to(self.txvCaixaTexto,caixaTag,Gtk.PositionType.BOTTOM,1,1)
 
         # CUARTA CAJA
         caixaV3 = Gtk.Box(orientation = Gtk.Orientation.VERTICAL, spacing = 2)
-        caixaGrid.attach_next_to(caixaV3,txvCaixaTexto,Gtk.PositionType.LEFT,1,1)
+        caixaGrid.attach_next_to(caixaV3,self.txvCaixaTexto,Gtk.PositionType.LEFT,1,1)
         txtCaixaTexto = Gtk.Entry()
         txtCaixaPassw = Gtk.Entry()
         txtCaixaPassw.set_invisible_char('*')
         txtCaixaPassw.set_visibility(False)
         cmbCombo = Gtk.ComboBox()
-        cmbCombo.set_model(store)
+        cmbCombo.set_model(store) # Añade al combo los elementos guardados en store
+        cmbCombo.connect("changed", self.on_cmbCombo_changed) # Conexión con un metodo para añadir el texto seleccionado al txtView
         celda2 = Gtk.CellRendererText()
         cmbCombo.pack_start(celda2,True)
         cmbCombo.add_attribute(celda2,"text", 0)
