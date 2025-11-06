@@ -18,7 +18,7 @@ class ModeloFollas (QAbstractListModel):
     # DecorationRole, EditRole, ToolTipRole
     def data(self,indice,rol):
         if rol == Qt.ItemDataRole.DisplayRole:
-            texto,_ = self.follas [indice.row()] # el ,_ sirve para mostrar todo lo del array
+            texto,_ = self.follas [indice.row()] # el ,_ sirve para mostrar el contenido total del array
             return texto
         if rol == Qt.ItemDataRole.DecorationRole:
             _, tipo = self.follas[indice.row()]
