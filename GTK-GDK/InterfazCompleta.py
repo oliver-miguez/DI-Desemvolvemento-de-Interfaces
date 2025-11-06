@@ -6,13 +6,19 @@ from gi.repository import Gtk, Gdk, GObject
 
 class InterfazCompleta(Gtk.Window):
 
+    """
+    Permite añadir texto al View dependiendo de la opción del comboBox elegida
+    """
     def on_cmbCombo_changed(self,combo):
         punteiro = combo.get_active_iter() # Revisa cuál es la posición del elemento seleccionado
         if punteiro is not None: # Si no está vacío
             modelo = combo.get_model() # Recoge el modelo del combo
-            elemento = modelo[punteiro][0] # ?
+            elemento = modelo[punteiro][0] # En la lista de nombres que tenemos cada dato, ej [0] nombre [1] dni
+            elemento2 = modelo[punteiro][1] # Prueba con el dni
             bufer = self.txvCaixaTexto.get_buffer()
-            bufer.insert(bufer.get_end_iter(), "\n Elemento seleccionado del comboBox: "+ elemento, -1)
+            bufer.insert(bufer.get_end_iter(), "\n Elemento del comboBox: "+ elemento + " con Dni:  "+ elemento2, -1)
+
+
     """
      Administra el funcionamiento de los radius Buttons
      radioButton: coge una referencia al radioButton que se presionó
@@ -45,10 +51,10 @@ class InterfazCompleta(Gtk.Window):
         frame.set_label("Panel") # Añade un nombre al marco
 
         # Cosas que contendrá "caixaV1"
-        store = Gtk.ListStore(str) # Crea una lista de una sola columna que solo aceptara strings
-        store.append(["Hola"])
-        store.append(["Prueba"])
-        store.append(["Otra Cosa"])
+        store = Gtk.ListStore(str,str) # Crea una lista de una sola columna que solo aceptara strings
+        store.append(("Oliver", "11111K"))
+        store.append(("Daniel", "20202020L"))
+        store.append(("Piero","33333E"))
 
         # Crear TreeView para mostrar los datos del ListStore(siempre igual)
         treeview = Gtk.TreeView(model=store)
