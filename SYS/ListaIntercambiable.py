@@ -59,7 +59,7 @@ class ListaIntercambiable(QMainWindow):
 
     def on_btnOcultar_clicked(self):
         indices = self.lstVisible.selectedIndexes()  # array de datos de la lista oculta
-        if indices:  # Como la seleccion es unica el valor seleccioando siempre devuelve indice 0
+        if indices:  # Como la selección es unica el valor seleccioando siempre devuelve indice 0
             self.modeloListaOcultos.follas.append(self.modeloListaVisibles.follas[indices[0].row()])  # Entonces añadimos el valor de indice[0] a una lista de los visibles, para mostarlo  Visibles
             del self.modeloListaVisibles.follas[indices[0].row()]  # Borramos la seleccion de oculto
             # para actualizar los cambios realizados
