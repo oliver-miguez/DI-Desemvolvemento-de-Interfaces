@@ -62,13 +62,10 @@ class Combo(QMainWindow):
         caixaV.addWidget(txtCadro2) # Añade el segundo cuadro de texto
         caixaV.addWidget(self.cmbComboBox) # Añade la comboBox
 
-
         maia.addLayout(caixaV,1,0,1,1) # Como caixaV es layout tiene que ser addLayout
 
         self.txeAreaTexto = QTextEdit() # Area donde podremos introducir texto
         maia.addWidget(self.txeAreaTexto,1,1,1,1) # Aquí como txtArea no es un layout, se le añade con widget
-
-
 
         # MOSTRAR LO DISEÑADO ANTERIORMENTE(OBLIGATORIO)
         aux = QWidget()
@@ -86,14 +83,12 @@ class Combo(QMainWindow):
         print(self.cmbComboBox.itemText(indice)) # Muestra por consola la opción escogida del comboBox
         self.txeAreaTexto.setPlainText("Has seleccionado el usuario: "+ self.cmbComboBox.itemText(indice)+ " con el dni: "+ self.nome_dni[1][indice] ) # Muestra en el bloque de texto el texto seleccionado del comboBox
 
-
     """
     Muestra el usuario seleccionado
     texto: recoge el valor del string del indice seleccionado del comboBox
     """
     def on_cmbComboBox_currentTextChanged(self, texto):
         print("El combo tiene seleccionado el elemento: "+ texto)
-
 
 # EJECUTA LA VENTANA(OBLIGATORIO)
 if __name__ == "__main__":
