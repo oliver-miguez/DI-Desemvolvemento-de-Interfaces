@@ -4,7 +4,8 @@ from mimetypes import inited
 import ModeloLista
 from PyQt6.QtCore import Qt
 from PyQt6.QtWidgets import (QApplication, QMainWindow, QPushButton, QLabel, QLineEdit, QVBoxLayout, QWidget, QCheckBox,
-                             QHBoxLayout, QListView, QListWidget, QComboBox, QTextEdit, QGridLayout)
+                             QHBoxLayout, QListView, QListWidget, QComboBox, QTextEdit, QGridLayout, QRadioButton,
+                             QButtonGroup)
 
 """
 Aprendiendo a usar el ComboBox en Python Qt
@@ -22,6 +23,26 @@ class Combo(QMainWindow):
 
         caixaV = QVBoxLayout() # Sirve para crear cada una de las cajas que tienen sus diferentes funcionalidades
 
+        # Crea 4 Radio Buttons
+        # Tenemos que añadirle self a cada uno para que funcionen los grupos de los botones
+        rbtBoton1 = QRadioButton("Botón1",self)
+        rbtBoton2 = QRadioButton("Botón2",self)
+        rbtBoton3 = QRadioButton("Botón3",self)
+        rbtBoton4 = QRadioButton("Botón4",self)
+
+        # Crea 2 grupos para administrar el orden de los botones
+        grupo1 = QButtonGroup(self)
+        grupo2 = QButtonGroup(self)
+        # Para permitir que se conecten
+        grupo1.setExclusive(True)
+        grupo2.setExclusive(True)
+
+        # Añade los botones a los grupos
+        grupo1.addButton(rbtBoton1)
+        grupo1.addButton(rbtBoton2)
+        grupo2.addButton(rbtBoton3)
+        grupo2.addButton(rbtBoton4)
+
         txtCadro1 = QLineEdit() # Bloque donde podemos escribir texto
         txtCadro2 = QLineEdit() # Bloque donde podemos escribir texto
 
@@ -31,9 +52,17 @@ class Combo(QMainWindow):
         self.cmbComboBox.currentIndexChanged.connect(self.on_cmbComboBox_currentIndexChanged) # Que ocurre cuando seleccionamos un objeto del comboBox
         self.cmbComboBox.currentTextChanged.connect(self.on_cmbComboBox_currentTextChanged)
 
+        # Añade los 4 Radio Buttons
+        caixaV.addWidget(rbtBoton1)
+        caixaV.addWidget(rbtBoton2)
+        caixaV.addWidget(rbtBoton3)
+        caixaV.addWidget(rbtBoton4)
+
         caixaV.addWidget(txtCadro1)  # Añade en el primer cuadro, tanto el texto 1 el 2 y el desplegable
-        caixaV.addWidget(txtCadro2)
-        caixaV.addWidget(self.cmbComboBox)
+        caixaV.addWidget(txtCadro2) # Añade el segundo cuadro de texto
+        caixaV.addWidget(self.cmbComboBox) # Añade la comboBox
+
+
         maia.addLayout(caixaV,1,0,1,1) # Como caixaV es layout tiene que ser addLayout
 
         self.txeAreaTexto = QTextEdit() # Area donde podremos introducir texto
