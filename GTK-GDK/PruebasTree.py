@@ -36,8 +36,6 @@ class EjemploTree(Gtk.Window):
         super().__init__()
         self.set_title("Ejemplo de Treeview en árbol")
 
-
-
         caixav = Gtk.Box(orientation= Gtk.Orientation.VERTICAL, spacing= 6)
 
         modelo = Gtk.TreeStore(str,str)
