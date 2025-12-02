@@ -36,12 +36,18 @@ class EjemploTree(Gtk.Window):
         super().__init__()
         self.set_title("Ejemplo de Treeview en árbol")
 
+
+
         caixav = Gtk.Box(orientation= Gtk.Orientation.VERTICAL, spacing= 6)
 
         modelo = Gtk.TreeStore(str,str)
         trvVista = Gtk.TreeView(model=modelo)
         seleccion = trvVista.get_selection()
         seleccion.connect("changed",self.on_selection_changed)
+
+        barraDesplazamento = Gtk.ScrolledWindow()
+        barraDesplazamento.set_policy(Gtk.PolicyType.NEVER,Gtk.PolicyType.AUTOMATIC)
+        barraDesplazamento.add(trvVista)
 
         tvcColumna = Gtk.TreeViewColumn()
         trvVista.append_column(tvcColumna)
@@ -57,7 +63,7 @@ class EjemploTree(Gtk.Window):
 
         self.explorarDirectorio('/home/dam/',None, modelo)
 
-        caixav.pack_start(trvVista,True,True,10)
+        caixav.pack_start(barraDesplazamento,True,True,10)
 
         self.add(caixav)
         self.connect("delete_event",Gtk.main_quit)
