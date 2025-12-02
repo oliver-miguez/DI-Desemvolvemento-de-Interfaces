@@ -14,7 +14,7 @@ class EjemploTree(Gtk.Window):
             modelo[fila][1] = cadroTexto
 
     def onXeneroChanged(self,celda,fila,index,modeloCombo,modeloTab):
-        modeloTab[fila][3] = modeloCombo[index][0]
+        modeloTab[fila][3] = celda.props.model[index][0]
 
     def __init__(self):
         super().__init__()
