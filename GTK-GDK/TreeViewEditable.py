@@ -1,34 +1,36 @@
 import  gi
+
 gi.require_version("Gtk","3.0")
 from gi.repository import Gtk,Gdk,GObject
 
 
 class EjemploTree(Gtk.Window):
-    def on_celdaFalecido_toogled(self,celda,fila,modelo):
-        print('Clicamos en ',fila)
-        modelo [fila][4] = not modelo [fila][4]
 
-    def on_celdaNome_edited(self,celda,fila,cadroTexto,numero,modelo):
-        print("Editamos: ",numero,fila,cadroTexto)
-        if numero == 1:
-            modelo[fila][1] = cadroTexto
-
-    def onXeneroChanged(self,celda,fila,index,modeloCombo,modeloTab):
-        modeloTab[fila][3] = celda.props.model[index][0]
 
     def __init__(self):
         super().__init__()
         self.set_title("Ejemplo de Treeview en árbol")
 
+
+
+        self.filtradoXenero=None
+        self.filtradoEdade=None
+
         caixav = Gtk.Box(orientation= Gtk.Orientation.VERTICAL, spacing= 6)
+
         modelo = Gtk.ListStore(str,str,int,str,bool)
         listaUsuarios = [('1234H','Ana Perez',34,'Muller',False),
-                         ('4321T','Pepe Diz',78,'Home',True)]
+                         ('4321T','Pepe Diz',78,'Home',True),
+                         ('5678U','Rosa Gil',56,'Muller',False),
+                         ('8765R','Juan Vila',43,'Home',False),
+                         ('4567P','Iris Vazquez',39,'Outros',True)]
 
         for usuario in listaUsuarios:
             modelo.append(usuario)
+        modelo_filtrado =modelo.filter_new()
+        modelo_filtrado.set_visible_func(self.filtro_usuarios_edade)
 
-        trvVista = Gtk.TreeView(model=modelo)
+        trvVista = Gtk.TreeView(model=modelo_filtrado)
 
         for i, tituloColumna in enumerate (('Dni','Nome')):
             celda = Gtk.CellRendererText()
@@ -41,19 +43,18 @@ class EjemploTree(Gtk.Window):
         trvVista.append_column(columna)
 
         modeloComboXenero = Gtk.ListStore(str)
-        modeloComboXenero.append(("Home",))  # si no hay coma no hay tupla
-        modeloComboXenero.append(('Muller',))
-        modeloComboXenero.append(('Outro',))
+        modeloComboXenero.append(("Home",))
+        modeloComboXenero.append(("Muller",))
+        modeloComboXenero.append(("Outros",))
+        modeloComboXenero.append(("Decepción",))
 
         celda = Gtk.CellRendererCombo()
 
         celda.set_property("editable",True)
         celda.props.model = modeloComboXenero
-
         celda.set_property("text-column",0)
         celda.set_property("has-entry",False)
-
-        celda.connect("changed",self.onXeneroChanged,modeloComboXenero,modelo)
+        celda.connect("changed",self.on_xenero_changed,modelo)
 
         columna = Gtk.TreeViewColumn('Xénero', celda, text=3)
         trvVista.append_column(columna)
@@ -66,9 +67,67 @@ class EjemploTree(Gtk.Window):
 
         caixav.pack_start(trvVista, True, True, 5)
 
+
+        caixaH = Gtk.Box (orientation = Gtk.Orientation.HORIZONTAL, spacing = 4)
+        rbtHome = Gtk.RadioButton(label = 'Home')
+        rbtMuller = Gtk.RadioButton.new_with_label_from_widget(rbtHome, label = 'Muller')
+        rbtOutros = Gtk.RadioButton.new_with_label_from_widget(rbtHome, label = 'Outros')
+        caixaH.pack_start(rbtHome,False,False,2)
+        caixaH.pack_start(rbtMuller,False,False,2)
+        caixaH.pack_start(rbtOutros,False,False,2)
+        rbtHome.connect("toggled",self.on_xeneroToggled,"Home",modelo_filtrado)
+        rbtMuller.connect("toggled",self.on_xeneroToggled,"Muller",modelo_filtrado)
+        rbtOutros.connect("toggled",self.on_xeneroToggled,"Outros",modelo_filtrado)
+
+        caixav.pack_start(caixaH,True,True,0)
+
+        scaleEdad = Gtk.Scale.new_with_range(orientation = Gtk.Orientation.HORIZONTAL,min = 1, max = 100,step = 1)
+
+
+        scaleEdad.connect("change-value",self.on_ScaleEdad_changeValue,modelo_filtrado)
+
+        caixav.pack_start(scaleEdad,True,True,0)
+
+
+
+
+
+
         self.add(caixav)
         self.connect("delete_event",Gtk.main_quit)
         self.show_all()
+
+    def on_celdaFalecido_toogled(self,celda,fila,modelo):
+        print('Clicamos en ',fila)
+        modelo [fila][4] = not modelo [fila][4]
+
+    def on_celdaNome_edited(self,celda,fila,cadroTexto,numero,modelo):
+        print("Editamos: ",numero,fila,cadroTexto)
+        if numero == 1:
+            modelo[fila][1] = cadroTexto
+
+    def on_xenero_changed(self,celda,fila,indx,modeloTab):
+        modeloTab[fila][3] = celda.props.model[indx][0]
+
+    def filtro_usuarios_xenero(self, modelo, fila,datos):
+        if self.filtradoXenero is None or self.filtradoXenero == "None":
+            return True
+        else:
+            return modelo[fila] [3] == self.filtradoXenero
+
+    def on_xeneroToggled(self,rbtElexido,xenero,modelo_filtrado):
+        if rbtElexido.get_active():
+            self.filtradoXenero = rbtElexido.get_label()
+            modelo_filtrado.refilter()
+            print(rbtElexido.get_label())
+
+    def filtro_usuarios_edade(self,modelo,fila,datos):
+        return modelo[fila][2] <= self.filtradoEdade
+
+    def on_ScaleEdad_changeValue(self,control,scroll,valor,modelo_filtrado):
+        self.filtradoEdade = valor
+        modelo_filtrado.refilter()
+
 
 
 if __name__ == "__main__":
