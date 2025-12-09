@@ -27,10 +27,13 @@ class EjemploTree(Gtk.Window):
 
         for usuario in listaUsuarios:
             modelo.append(usuario)
+
+        modelo.set_sort_func(2,self.compara_edades,None)
+
         modelo_filtrado =modelo.filter_new()
         modelo_filtrado.set_visible_func(self.filtro_usuarios_edade)
 
-        trvVista = Gtk.TreeView(model=modelo_filtrado)
+        trvVista = Gtk.TreeView(model=modelo)
 
         for i, tituloColumna in enumerate (('Dni','Nome')):
             celda = Gtk.CellRendererText()
@@ -38,8 +41,10 @@ class EjemploTree(Gtk.Window):
             celda.connect("edited",self.on_celdaNome_edited,i,modelo)
             columna = Gtk.TreeViewColumn(tituloColumna,celda,text = i)
             trvVista.append_column(columna)
+
         celda = Gtk.CellRendererProgress()
         columna = Gtk.TreeViewColumn('Edade',celda, value = 2)
+        columna.set_sort_column_id(2)
         trvVista.append_column(columna)
 
         modeloComboXenero = Gtk.ListStore(str)
@@ -88,11 +93,6 @@ class EjemploTree(Gtk.Window):
 
         caixav.pack_start(scaleEdad,True,True,0)
 
-
-
-
-
-
         self.add(caixav)
         self.connect("delete_event",Gtk.main_quit)
         self.show_all()
@@ -128,7 +128,17 @@ class EjemploTree(Gtk.Window):
         self.filtradoEdade = valor
         modelo_filtrado.refilter()
 
+    def compara_edades(self,modelo,fila1,fila2,datosUsuario):
+        columna_ordear, _ = modelo.get_sort_column_id()
+        edade1 = modelo.get_value (fila1,columna_ordear)
+        edade2 = modelo.get_value (fila2,columna_ordear)
 
+        if edade1 > edade2:
+            return 1
+        elif edade1< edade2:
+            return -1
+        elif edade1 == edade2:
+            return 0
 
 if __name__ == "__main__":
     EjemploTree()
